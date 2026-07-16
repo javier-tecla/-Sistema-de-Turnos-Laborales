@@ -1,0 +1,76 @@
+Table usuarios {
+    id int [pk, increment]
+    email varchar(255) [not null, unique]
+    password varchar(255) [not null]
+    rol enum('admin', 'supervisor', 'empleado') [not null, default: 'empleado']
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table sucursales {
+    id int [pk, increment]
+    nombre varchar(150) [not null, unique]
+    direccion text
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table empleados {
+    id int [pk, increment]
+    usuario_id int [ref: > usuarios.id]
+    nombres varchar(255) [not null]
+    apellidos varchar(255) [not null]
+    tipo_doc enum('CI','DNI','RUC','PASAPORTE','OTRO') [not null]
+    numero_doc varchar(50) [not null, unique]
+    telefono varchar(50)
+    direccion text
+    profesion varchar(150)
+    fecha_nacimiento date
+    genero enum('M', 'F')
+    avatar varchar(255) [null]
+    estado enum('activo','inactivo') [not null, default: 'activo']
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table categorias {
+    id int [pk, increment]
+    nombre varchar(150) [not null, unique]
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table turnos {
+    id int [pk, increment]
+    categoria_id int [ref: > categorias.id]
+    nombre varchar(150) [not null]
+    hora_inicio time [not null]
+    hora_fin time [not null]
+    color_fondo varchar(7) [default: '#3498db']
+    color_texto varchar(7) [default: '#ffffff']
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table cronogramas {
+    id int [pk, increment]
+    empleado_id int [ref: > empleados.id]
+    turno_id int [ref: > turnos.id]
+    sucursal_id int [ref: > sucursales.id] // <--Relacion de rotación aquí
+    fecha date [not null]
+    notas text [not null]
+    created_at timestamp
+    updated_at timestamp
+
+    Note: 'indice unico compuesto entre empleado_id y fecha para evitar turno el mismo dia'
+}
+
+Table ausencias {
+    id int [pk, increment]
+    empleado_id int [ref: > empleados.id]
+    fecha_inicio date [not null]
+    fecha_fin date [not null]
+    tipo enum('vacaciones', 'medica', 'permiso', 'otro') [not null]
+    estado enum('pendiente', 'aprobado', 'rechazado') [not null, default: 'pendiente']
+    created_at timestamp
+    updated_at timestamp
