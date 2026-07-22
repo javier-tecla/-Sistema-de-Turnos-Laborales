@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\RoleController;
 use App\Http\Controllers\Security\PermissionController;
+use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 // Packages
@@ -60,6 +61,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Users Module
     Route::resource('users', UserController::class);
+
+    // Sucursal Module
+    Route::get('/sucursales', [SucursalController::class, 'index'])->name('sucursales.index');
+    Route::get('/sucursales/create', [SucursalController::class, 'create'])->name('sucursales.create');
+    Route::post('/sucursales', [SucursalController::class, 'store'])->name('sucursales.store');
+    Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
+    Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
+    Route::delete('/sucursales/{id}', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
 });
 
 //App Details Page => 'Dashboard'], function() {
