@@ -12,7 +12,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        return view('sucursales.index');
+        $sucursales = Sucursal::all();
+        return view('sucursales.index', compact('sucursales'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        return view('sucursales.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+        ]);
+
+        $sucursal = new Sucursal();
+        $sucursal->nombre = $request->input('nombre');
+        $sucursal->direccion = $request->input('direccion');
+        $sucursal->save();
+
+        return redirect()->route('sucursales.index')->with('success', 'Sucursal creada exitosamente.');
     }
 
     /**
@@ -42,24 +53,38 @@ class SucursalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sucursal $sucursal)
+    public function edit($id)
     {
-        //
+        $sucursal = Sucursal::findOrFail($id);
+        return view('sucursales.edit', compact('sucursal'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sucursal $sucursal)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+        ]);
+
+        $sucursal = Sucursal::findOrFail($id);
+        $sucursal->nombre = $request->input('nombre');
+        $sucursal->direccion = $request->input('direccion');
+        $sucursal->save();
+
+        return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sucursal $sucursal)
+    public function destroy($id)
     {
-        //
+        $sucursal = Sucursal::findOrFail($id);
+        $sucursal->delete();
+
+        return redirect()->route('sucursales.index')->with('success', "Sucursal eliminada exitosamente.");
     }
 }
