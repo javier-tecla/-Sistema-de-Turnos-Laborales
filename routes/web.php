@@ -1,6 +1,8 @@
 <?php
 
 // Controllers
+
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\RoleController;
@@ -69,6 +71,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sucursales/{id}/edit', [SucursalController::class, 'edit'])->name('sucursales.edit');
     Route::put('/sucursales/{id}', [SucursalController::class, 'update'])->name('sucursales.update');
     Route::delete('/sucursales/{id}', [SucursalController::class, 'destroy'])->name('sucursales.destroy');
+
+    // Categorias Module
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
+    Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
+    Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+
 });
 
 //App Details Page => 'Dashboard'], function() {

@@ -100,4 +100,15 @@
             <span class="item-name">Sucursales</span>
         </a>
     </li>
+     <li class="nav-item">
+        <a class="nav-link {{activeRoute(route('categorias.index'))}}" href="{{route('categorias.index') }}">
+            <i class="icon">
+            <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.4" d="M19.435 4.05H14.535L12.465 2.1C11.905 1.559 11.155 1.25 10.365 1.25H4.565C3.335 1.25 2.375 2.27 2.375 3.45V20.55C2.375 21.73 3.335 22.75 4.565 22.75H19.435C20.665 22.75 21.625 21.73 21.625 20.55V6.25C21.625 5.07 20.665 4.05 19.435 4.05Z" fill="currentColor"></path>
+            <path d="M16.045 12.35H7.955C7.525 12.35 7.175 12.7 7.175 13.13V13.14C7.175 13.57 7.525 13.92 7.955 13.95H16.045C16.475 13.92 16.825 13.57 16.825 13.1Z" fill="currentColor"></path>
+            </svg>
+            </i>
+            <span class="item-name">Categorías</span>
+        </a>
+    </li>
 </ul>

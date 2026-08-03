@@ -1,61 +1,53 @@
-<x-app-layout :assets="$assets ?? []">
+<x-app-layout :asset="$assets ?? []">
     <div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Listado de Sucursales</h4>
+                            <h4 class="card-title">Listado de Categorías</h4>
                         </div>
                         <div class="card-action">
-                            <a href="{{ route('sucursales.create') }}" class="btn btn-sm btn-primary" role="button">
-                                Nueva Sucursal
+                            <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-primary" role="button">
+                                Nueva Categoría
                             </a>
                         </div>
                     </div>
                     <div class="card-body px-0">
                         <div class="table-responsive">
-                            <table id="sucursales-table" class="table table-striped text-center w-100">
+                            <table id="categorias-table" class="table table-striped text-center w-100">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre</th>
-                                        <th>Dirección</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($sucursales as $sucursal)
+                                    @foreach ($categorias as $categoria)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $sucursal->nombre }}</td>
-                                            <td>{{ $sucursal->direccion ?? '-' }}</td>
+                                            <td>{{ $categoria->nombre }}</td>
                                             <td>
                                                 <div class="d-flex align-items-center justify-content-center gap-2">
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('sucursales.edit', $sucursal->id) }}">
+                                                        href="{{ route('categorias.edit', $categoria->id) }}">
                                                         Editar
                                                     </a>
                                                     <button type="button" class="btn btn-sm btn-danger btn-delete"
-                                                        data-id="{{ $sucursal->id }}"
-                                                        data-nombre="{{ $sucursal->nombre }}">
+                                                        data-id="{{ $categoria->id }}"
+                                                        data-nombre="{{ $categoria->nombre }}">
                                                         Eliminar
                                                     </button>
-                                                    <form action="{{ route('sucursales.destroy', $sucursal->id) }}"
-                                                        id="sucursal-delete-{{ $sucursal->id }}" method="post">
+                                                    <form action="{{ route('categorias.destroy', $categoria->id) }}"
+                                                        id="categoria-delete-{{ $categoria->id }}" method="post">
                                                         @method('delete')
                                                         @csrf()
                                                     </form>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="4" class="text-center py-4">
-                                                No hay sucursales registradas.
-                                            </td>
-                                        </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -64,10 +56,10 @@
             </div>
         </div>
     </div>
-    @push('scripts')
+     @push('scripts')
         <script>
             $(document).ready(function() {
-                $('#sucursales-table').DataTable({
+                $('#categorias-table').DataTable({
                     language: {
                         processing: "Procesando...",
                         search: "Buscar:",
@@ -102,7 +94,7 @@
                     var id = $(this).data('id');
                     var nombre = $(this).data('nombre');
                     Swal.fire({
-                        title: '¿Eliminar sucursal?',
+                        title: '¿Eliminar categoria?',
                         text: '¿Está seguro de eliminar "' + nombre + '"?',
                         icon: 'warning',
                         showCancelButton: true,
@@ -112,7 +104,7 @@
                         cancelButtonText: 'Cancelar'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            $('#sucursal-delete-' + id).submit();
+                            $('#categoria-delete-' + id).submit();
                         }
                     });
                 });
