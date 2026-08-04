@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{asset('css/dark.css?v=1.1.0')}}">
 <link rel="stylesheet" href="{{asset('css/rtl.css?v=1.1.0')}}">
 <link rel="stylesheet" href="{{asset('css/customizer.css?v=1.1.0')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <!-- Fullcalender CSS -->
 <link rel="stylesheet" href="{{ asset('vendor/flatpickr/dist/flatpickr.min.css') }}">

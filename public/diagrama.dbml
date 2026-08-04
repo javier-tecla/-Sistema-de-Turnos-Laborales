@@ -74,3 +74,4 @@ Table ausencias {
     estado enum('pendiente', 'aprobado', 'rechazado') [not null, default: 'pendiente']
     created_at timestamp
     updated_at timestamp
+}

@@ -3,6 +3,7 @@
 // Controllers
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Security\RolePermission;
 use App\Http\Controllers\Security\RoleController;
@@ -79,6 +80,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
     Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+
+    // Empleados Module
+    Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/create', [EmpleadoController::class, 'create'])->name('empleados.create');
+    Route::post('/empleados', [EmpleadoController::class, 'store'])->name('empleados.store');
+    Route::get('/empleados/{id}', [EmpleadoController::class, 'show'])->name('empleados.show');
+    Route::get('/empleados/{id}', [EmpleadoController::class, 'edit'])->name('empleados.edit');
+    Route::put('/empleados/{id}', [EmpleadoController::class, 'update'])->name('empleados.update');
+    Route::delete('/empleados/{id}', [EmpleadoController::class, 'destroy'])->name('empleados.destroy');
 
 });
 

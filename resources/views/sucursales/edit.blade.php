@@ -11,7 +11,7 @@
                                 <h4 class="card-title">Editar Sucursal</h4>
                             </div>
                             <div class="card-action">
-                                <a href="{{ route('sucursales.index') }}" class="btn btn-sm-primary"
+                                <a href="{{ route('sucursales.index') }}" class="btn btn-sm btn-primary"
                                     role="button">Volver</a>
                             </div>
                         </div>
