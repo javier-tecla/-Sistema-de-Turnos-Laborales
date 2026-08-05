@@ -1,6 +1,6 @@
 <x-app-layout :assets="$assets ?? []">
     <div>
-        <form action="{{ route('empleados.store') }}" method="POST">
+        <form action="{{ route('empleados.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-sm-12">
