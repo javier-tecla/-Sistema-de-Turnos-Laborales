@@ -52,7 +52,7 @@
                                                     </a>
                                                     <button type="button" class="btn btn-sm btn-danger btn-delete"
                                                         data-id="{{ $empleado->id }}"
-                                                        data-nombre="{{ $empleado->nombre }}">
+                                                        data-nombre="{{ $empleado->nombre_completo }}">
                                                         Eliminar
                                                     </button>
                                                     <form action="{{ route('empleados.destroy', $empleado->id) }}"
