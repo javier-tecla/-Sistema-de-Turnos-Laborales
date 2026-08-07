@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $this->call([
             PermissionTableSeeder::class,
             RoleTableSeeder::class,
@@ -23,5 +23,22 @@ class DatabaseSeeder extends Seeder
             $user->assignRole('user');
         });
         \App\Models\UserProfile::factory(43)->create();
+        */
+        $this->call([
+            RoleSeeder::class,
+        ]);
+
+        $usuarioSuperAdmin = \App\Models\User::factory()->create([
+            'username' => 'superadmin',
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
+            'email' => 'Admin@admin.com',
+            'password' => bcrypt('12345678'),
+            'phone_number' => '+12398190255',
+            'user_type' => 'SUPER ADMINISTRADOR',
+            'status' => 'active',
+        ]);
+
+        $usuarioSuperAdmin->assignRole('SUPER ADMINISTRADOR');
     }
 }

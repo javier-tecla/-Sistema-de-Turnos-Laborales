@@ -25,7 +25,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($sucursales as $sucursal)
+                                    @foreach ($sucursales as $sucursal)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $sucursal->nombre }}</td>
@@ -49,13 +49,13 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
+                                    {{-- @empty
                                         <tr>
                                             <td colspan="4" class="text-center py-4">
                                                 No hay sucursales registradas.
                                             </td>
-                                        </tr>
-                                    @endforelse
+                                        </tr> --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -94,7 +94,7 @@
                     ],
                     columnDefs: [{
                         orderable: false,
-                        targets: 2
+                        targets: 3
                     }]
                 });
 

@@ -17,12 +17,27 @@
                         fill="currentColor"></path>
                 </svg>
             </i>
-            <span class="item-name">Dashboard</span>
+            <span class="item-name">Inicio</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " data-bs-toggle="collapse" href="#sidebar-user" role="button" aria-expanded="false"
-            aria-controls="sidebar-user">
+        <a class="nav-link {{ activeRoute(route('role.permission.list')) }}" href="{{ route('role.permission.list') }}"
+            <i class="icon">
+            <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M7.7688 8.71387H16.2312C18.5886 8.71387 20.5 10.5831 20.5 12.8885V17.8254C20.5 20.1308 18.5886 22 16.2312 22H7.7688C5.41136 22 3.5 20.1308 3.5 17.8254V12.8885C3.5 10.5831 5.41136 8.71387 7.7688 8.71387ZM11.9949 17.3295C12.4928 17.3295 12.8891 16.9419 12.8891 16.455V14.2489C12.8891 13.772 12.4928 13.3844 11.9949 13.3844C11.5072 13.3844 11.1109 13.772 11.1109 14.2489V16.455C11.1109 16.9419 11.5072 17.3295 11.9949 17.3295Z"
+                    fill="currentColor"></path>
+                <path opacity="0.4"
+                    d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z"
+                    fill="currentColor"></path>
+            </svg>
+            </i>
+            <span class="item-name">Roles y Permisos</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {{ activeRoute(route('users.index')) }}" href="{{ route('users.index') }}">
             <i class="icon">
                 <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -46,70 +61,23 @@
                 </svg>
             </i>
             <span class="item-name">Usuarios</span>
-            <i class="right-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </i>
         </a>
-        <ul class="sub-nav collapse" id="sidebar-user" data-bs-parent="#sidebar">
-            <li class="nav-item">
-                <a class="nav-link {{ activeRoute(route('users.show', 1)) }}" href="{{ route('users.show', 1) }}">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                            <g>
-                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                            </g>
-                        </svg>
-                    </i>
-                    <i class="sidenav-mini-icon"> U </i>
-                    <span class="item-name">User Profile</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ activeRoute(route('users.create')) }}" href="{{ route('users.create') }}">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                            <g>
-                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                            </g>
-                        </svg>
-                    </i>
-                    <i class="sidenav-mini-icon"> E </i>
-                    <span class="item-name">Edit User</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ activeRoute(route('users.index')) }}" href="{{ route('users.index') }}">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                            <g>
-                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                            </g>
-                        </svg>
-                    </i>
-                    <i class="sidenav-mini-icon"> U </i>
-                    <span class="item-name">User List</span>
-                </a>
-            </li>
-        </ul>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link {{ activeRoute(route('role.permission.list')) }}" href="{{ route('role.permission.list') }}"
-            target="_blank">
+        <a class="nav-link {{ activeRoute(route('empleados.index')) }}" href="{{ route('empleados.index') }}">
             <i class="icon">
-                <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M7.7688 8.71387H16.2312C18.5886 8.71387 20.5 10.5831 20.5 12.8885V17.8254C20.5 20.1308 18.5886 22 16.2312 22H7.7688C5.41136 22 3.5 20.1308 3.5 17.8254V12.8885C3.5 10.5831 5.41136 8.71387 7.7688 8.71387ZM11.9949 17.3295C12.4928 17.3295 12.8891 16.9419 12.8891 16.455V14.2489C12.8891 13.772 12.4928 13.3844 11.9949 13.3844C11.5072 13.3844 11.1109 13.772 11.1109 14.2489V16.455C11.1109 16.9419 11.5072 17.3295 11.9949 17.3295Z"
-                        fill="currentColor"></path>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.9488 14.54C8.49884 14.54 5.58789 15.1038 5.58789 17.2795C5.58789 19.4562 8.51765 20.0001 11.9488 20.0001C15.3988 20.0001 18.3098 19.4364 18.3098 17"
+                        fill="currentColor" />
                     <path opacity="0.4"
-                        d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z"
-                        fill="currentColor"></path>
+                        d="M11.949 12.467C14.2851 12.467 16.1583 10.5831 16.1583 8.23351C16.1583 5.88392 14.2851 4 11.949 4C9.61284 4 7.73975 5.88392 7.73975 8.23351C7.73975 10.5831 9.61284 12.467 11.949 12.467Z"
+                        fill="currentColor" />
                 </svg>
             </i>
-            <span class="item-name">Roles y Permisos</span>
+            <span class="item-name">Empleados</span>
         </a>
     </li>
     <li class="nav-item">
@@ -140,22 +108,6 @@
                 </svg>
             </i>
             <span class="item-name">Categorías</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link {{ activeRoute(route('empleados.index')) }}" href="{{ route('empleados.index') }}">
-            <i class="icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M11.9488 14.54C8.49884 14.54 5.58789 15.1038 5.58789 17.2795C5.58789 19.4562 8.51765 20.0001 11.9488 20.0001C15.3988 20.0001 18.3098 19.4364 18.3098 17"
-                        fill="currentColor" />
-                    <path opacity="0.4"
-                        d="M11.949 12.467C14.2851 12.467 16.1583 10.5831 16.1583 8.23351C16.1583 5.88392 14.2851 4 11.949 4C9.61284 4 7.73975 5.88392 7.73975 8.23351C7.73975 10.5831 9.61284 12.467 11.949 12.467Z"
-                        fill="currentColor" />
-                </svg>
-            </i>
-            <span class="item-name">Empleados</span>
         </a>
     </li>
 </ul>

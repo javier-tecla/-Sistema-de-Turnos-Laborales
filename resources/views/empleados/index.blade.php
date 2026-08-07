@@ -42,6 +42,10 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center justify-content-center gap-2">
+                                                    <a class="btn btn-sm btn-info"
+                                                        href="{{ route('empleados.show', $empleado->id) }}">
+                                                        Ver
+                                                    </a>
                                                     <a class="btn btn-sm btn-success"
                                                         href="{{ route('empleados.edit', $empleado->id) }}">
                                                         Editar

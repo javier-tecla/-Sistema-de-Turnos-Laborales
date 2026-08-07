@@ -84,9 +84,10 @@ class EmpleadoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Empleado $empleado)
+    public function show($id)
     {
-        //
+        $empleado = Empleado::find($id);
+        return view('empleados.show', compact('empleado'));
     }
 
     /**
